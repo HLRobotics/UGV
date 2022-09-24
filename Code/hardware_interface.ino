@@ -20,8 +20,9 @@ int leftMotorBackward = 0;    /* GPIO0(D3) -> IN4   */
 int rightMotorBackward = 13;  /* GPIO13(D7) -> IN2  */
 int leftEnable=5;
 int rightEnable=14;
+int speedL=75;
+int speedR=75; 
 int speed=75;
- 
  
 void setup()
 {
@@ -91,7 +92,7 @@ void MotorForward(void)
   digitalWrite(rightMotorForward, HIGH);
   digitalWrite(leftMotorBackward, LOW);
   digitalWrite(rightMotorBackward, LOW);
-  speedController(speed);
+  DistinctSpeedController(speedL,speedR);
   Serial.println("Moving Forward");
 }
  
@@ -102,7 +103,7 @@ void MotorBackward(void)
   digitalWrite(rightMotorBackward, HIGH);
   digitalWrite(leftMotorForward, LOW);
   digitalWrite(rightMotorForward, LOW);
-  speedController(speed);
+  DistinctSpeedController(speedL,speedR);
   Serial.println("Moving Backward");
 }
  
@@ -155,4 +156,11 @@ void speedController(int speed)
 {
   analogWrite(rightEnable,speed);
   analogWrite(leftEnable,speed);
+}
+
+
+void DistinctSpeedController(int speedL, int speedR)
+{
+  analogWrite(rightEnable,speedR);
+  analogWrite(leftEnable,speedL);
 }

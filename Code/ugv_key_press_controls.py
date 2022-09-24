@@ -28,6 +28,14 @@ class KeyboarController:
                 self.controller_helper.increase_speed()
             if key.char == "-":
                 self.controller_helper.decrease_speed()
+            if key.char == "q":
+                self.controller_helper.increase_left_motor_speed()
+            if key.char == "z":
+                self.controller_helper.decrease_left_motor_speed()
+            if key.char == "e":
+                self.controller_helper.increase_right_motor_speed()
+            if key.char == "c":
+                self.controller_helper.decrease_right_motor_speed()
 
         except AttributeError:
             print("special key pressed: {0}".format(key))
